@@ -95,7 +95,7 @@ function Hero1() {
 
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/10 shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-pink-900/5"></div>
-                <img src="./profile.jpg" alt="Abhishek Pimpalkar" className="w-full h-full object-cover" />
+                <img src="./PROFILE.png" alt="Abhishek Pimpalkar" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 via-transparent to-transparent"></div>
               </div>
 

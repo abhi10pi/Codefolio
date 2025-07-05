@@ -7,8 +7,8 @@ export default function AchievementsSection() {
     {
       title: "💡 200-day LeetCode streak with monthly badges",
       badges: [
-        "/100Days.png",
-        "/Hund1.png",
+        "/HUNDD.png",
+        "/HUND.png",
         "/FIFTY1.png",
         "/FIFTY.png",
         "/JAN.png",
