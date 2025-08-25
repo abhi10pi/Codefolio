@@ -6,15 +6,15 @@ const projects = [
     title: "Nexly – AI Career Platform",
     tech: ["Next.js", "Prisma", "PostgreSQL", "Gemini API"],
     desc: "AI-powered platform with resume builder, mock interviews, and job market insights.",
-    github: "https://github.com/abhi10pi/Nexly",
-    live: "https://nexly.vercel.app",
+    github: "https://github.com/abhi10pi/Nexly-NextCareer-AI",
+    live: "https://nexly-nextcareer-ai.vercel.app/",
   },
   {
-    title: "FundUp – Fundraising for Creators",
-    tech: ["Next.js", "MongoDB", "Express", "Razorpay"],
-    desc: "Full-stack platform for creators to raise funds securely with integrated Razorpay payments.",
-    github: "https://github.com/abhi10pi/FundRaising",
-    live: "https://fundup.vercel.app",
+    title: "AutoFynd – Smart Car Marketplace",
+    tech: ["Next.js", "Supabase", "Clerk", "Gemini API"],
+    desc: "An online platform to simplify car discovery and booking using AI-driven Image search with advanced filters.",
+    github: "https://github.com/abhi10pi/AutoFynd",
+    live: "#",
   },
 ];
 
