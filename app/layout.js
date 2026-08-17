@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio",
-  description: "A window into my work, passion, and code",
-   icons: {
-    icon: "/PortfolioLogo.png", // Correct path, assuming it's in /public
+  title: "Abhishek Pimpalkar — Backend Developer",
+  description: "Backend Developer specializing in Java & Spring Boot with full-stack capabilities in React & Next.js. Final-year B.Tech (AI) student at GH Raisoni College, Pune.",
+  icons: {
+    icon: "/PortfolioLogo.png",
   },
 };
 

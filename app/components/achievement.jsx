@@ -1,75 +1,123 @@
-import { useState } from "react";
+'use client';
+
+import { useState } from 'react';
+import { motion } from 'motion/react';
+import { useScrollReveal } from '../lib/useScrollReveal';
+import { ExternalLink, Trophy, Code2, Users } from 'lucide-react';
+
+const achievements = [
+  {
+    icon: <Trophy className="w-4 h-4" />,
+    title: 'Super Contributor — Hacktoberfest 2025',
+    desc: 'Earned the Super Contributor Badge from DigitalOcean & GitHub for significant open-source contributions.',
+    link: 'https://www.holopin.io/hacktoberfest2025/userbadge/cmgkihuso0029i804g7rzz6ic',
+    linkLabel: 'View Badge',
+  },
+  {
+    icon: <Code2 className="w-4 h-4" />,
+    title: '200+ Day LeetCode Streak · 11 Badges',
+    desc: 'Maintained a 200+ day problem-solving streak on LeetCode, earning 11 badges for consistency and contest performance.',
+    link: 'https://leetcode.com/u/abhi_pimpalkar01/',
+    linkLabel: 'LeetCode Profile',
+    hasBadges: true,
+  },
+  {
+    icon: <Users className="w-4 h-4" />,
+    title: 'Top 500 — MumbaiHacks 2025',
+    desc: 'Shortlisted among top 500 teams nationally for an AI-powered Generic Medicine Finder in the Healthcare track.',
+    link: null,
+  },
+];
+
+const badges = [
+  '/HUNDD.png', '/HUND.png', '/FIFTY1.png', '/FIFTY.png', '/JAN.png',
+  '/FEB.png', '/MAR.png', '/SEP.png', '/OCT.png', '/NOV.png', '/DEC.png',
+];
 
 export default function AchievementsSection() {
-  const [showAllBadges, setShowAllBadges] = useState(false);
-
-  const achievements = [
-    {
-      title: "💡 200-day LeetCode streak with monthly badges",
-      badges: [
-        "/HUNDD.png",
-        "/HUND.png",
-        "/FIFTY1.png",
-        "/FIFTY.png",
-        "/JAN.png",
-        "/FEB.png",
-        "/MAR.png",
-        "/SEP.png",
-        "/OCT.png",
-        "/NOV.png",
-        "/DEC.png",
-      ],
-    },
-  ];
+  const [showAll, setShowAll] = useState(false);
+  const { ref, isInView } = useScrollReveal();
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-br from-slate-950 to-slate-900 text-white">
-      <div className="max-w-5xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-14 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
+    <section className="bg-[#080810] py-24 px-6 sm:px-10 lg:px-16">
+      <div className="max-w-3xl mx-auto" ref={ref}>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="text-purple-400 text-xs font-semibold tracking-widest uppercase mb-3"
+        >
           Achievements
-        </h2>
+        </motion.p>
 
-        <div className="relative border-l-2 border-purple-600/30 pl-6 space-y-14">
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="text-3xl sm:text-4xl font-bold text-white mb-12"
+        >
+          Highlights
+        </motion.h2>
+
+        <div className="space-y-4">
           {achievements.map((item, i) => (
-            <div key={i} className="relative">
-              {/* Dot marker */}
-              <div className="absolute -left-[11px] top-1 w-5 h-5 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 shadow-md" />
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: 0.2 + i * 0.12 }}
+              className="p-5 sm:p-6 rounded-2xl border border-white/8 bg-white/3 hover:border-purple-500/20 hover:bg-white/5 transition-all duration-300"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 shrink-0 mt-0.5">
+                  {item.icon}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="text-sm font-semibold text-white mb-1">{item.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">{item.desc}</p>
 
-              {/* Achievement Text */}
-              <p className="text-lg text-gray-300 leading-snug mb-3">{item.title}</p>
+                  {item.link && (
+                    <a
+                      href={item.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 mt-3 text-xs text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      {item.linkLabel}
+                    </a>
+                  )}
 
-              {/* Badge Section */}
-              {item.badges && (
-                <>
-                  <div className="grid grid-cols-5 gap-2">
-                    {(showAllBadges ? item.badges : item.badges.slice(0, 5)).map((badge, index) => (
-                      <div
-                        key={index}
-                        className="w-16 h-24 rounded-md overflow-hidden bg-slate-800 shadow-sm"
-                      >
-                        <img
-                          src={badge}
-                          alt={`Badge ${index + 1}`}
-                          className="w-full h-full object-cover"
-                        />
+                  {/* LeetCode badges */}
+                  {item.hasBadges && (
+                    <div className="mt-4">
+                      <div className="flex flex-wrap gap-2">
+                        {(showAll ? badges : badges.slice(0, 6)).map((badge, bi) => (
+                          <motion.div
+                            key={bi}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                            transition={{ delay: 0.5 + bi * 0.04 }}
+                            className="w-12 h-16 rounded-lg overflow-hidden bg-slate-800/60 border border-white/8"
+                          >
+                            <img src={badge} alt={`Badge ${bi + 1}`} className="w-full h-full object-cover" />
+                          </motion.div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-
-                  {/* Toggle Button */}
-                  {item.badges.length > 5 && (
-                    <div className="mt-3">
-                      <button
-                        className="text-sm text-purple-400 hover:underline"
-                        onClick={() => setShowAllBadges(!showAllBadges)}
-                      >
-                        {showAllBadges ? "Show Less" : "Show More"}
-                      </button>
+                      {badges.length > 6 && (
+                        <button
+                          onClick={() => setShowAll(!showAll)}
+                          className="mt-3 text-xs text-purple-400 hover:text-purple-300 transition-colors"
+                        >
+                          {showAll ? 'Show less' : `+${badges.length - 6} more badges`}
+                        </button>
+                      )}
                     </div>
                   )}
-                </>
-              )}
-            </div>
+                </div>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
