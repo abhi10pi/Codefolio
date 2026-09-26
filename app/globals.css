@@ -114,3 +114,61 @@ body {
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* ── Parallax background layers ── */
+.parallax-bg {
+  position: absolute;
+  inset: -20% 0;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 0;
+}
+
+/* Shared orb + grid pattern */
+.parallax-bg::before,
+.parallax-bg::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.045;
+}
+
+/* Top-right orb */
+.parallax-bg::before {
+  width: clamp(300px, 45vw, 600px);
+  height: clamp(300px, 45vw, 600px);
+  top: 10%;
+  right: -8%;
+}
+
+/* Bottom-left orb */
+.parallax-bg::after {
+  width: clamp(200px, 30vw, 400px);
+  height: clamp(200px, 30vw, 400px);
+  bottom: 10%;
+  left: -5%;
+  opacity: 0.03;
+}
+
+.parallax-bg-purple::before { background: #a855f7; }
+.parallax-bg-purple::after  { background: #ec4899; }
+
+.parallax-bg-pink::before   { background: #ec4899; }
+.parallax-bg-pink::after    { background: #a855f7; }
+
+.parallax-bg-blue::before   { background: #3b82f6; }
+.parallax-bg-blue::after    { background: #a855f7; }
+
+.parallax-bg-teal::before   { background: #14b8a6; }
+.parallax-bg-teal::after    { background: #3b82f6; }
+
+/* Subtle dot-grid overlay on each parallax section */
+.parallax-bg {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-bg { transform: none !important; }
+}
