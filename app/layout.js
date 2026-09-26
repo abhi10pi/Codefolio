@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
+import SmoothScroll from "@/components/layout/SmoothScroll";
+import ScrollProgressBar from "@/components/layout/ScrollProgressBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +28,10 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <ScrollProgressBar />
+        {/* <CustomCursor /> */}
+        <SmoothScroll>{children}</SmoothScroll>
+      
         <Analytics />
       </body>
     </html>
